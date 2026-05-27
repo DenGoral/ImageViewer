@@ -3,13 +3,13 @@
         xmlns:vm="using:ImageViewer.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="900"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="925"
         x:Class="ImageViewer.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Gallery"
         
-        Width="600" Height="850"
+        Width="900" Height="925"
         Background="#0C141B">
 
     <Design.DataContext>
@@ -19,23 +19,25 @@
     <Grid ColumnDefinitions="Auto, *">
         <!-- IMAGES -->
         <Grid Grid.Column="0">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="25" Spacing="5">
-                <!-- LOAD FOLDER -->
-                <Button Classes="BaseButton" Width="100" Height="50">
-                    <StackPanel Orientation="Horizontal">
-                        <Path />
-                        <TextBlock Text="Load Folder"/>
-                    </StackPanel>
-                </Button>
+            <Border BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="25" Spacing="8">
+                    <!-- LOAD FOLDER -->
+                    <Button Classes="BaseButton" Width="150" Height="40">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon"/>
+                            <TextBlock Text="Load Folder" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
                 
-                <!-- LOAD FILE -->
-                <Button Classes="BaseButton">
-                    <StackPanel Orientation="Horizontal">
-                        <Path />
-                        <TextBlock Text="Load File"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                    <!-- LOAD FILE -->
+                    <Button Classes="BaseButton" Width="150" Height="40" Background="#212934">
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <Path Data="{StaticResource FileIcon}" Classes="BaseIcon"/>
+                            <TextBlock Text="Load File" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Border>
         </Grid>
             
         <!-- MAIN IMAGE VIEW -->
