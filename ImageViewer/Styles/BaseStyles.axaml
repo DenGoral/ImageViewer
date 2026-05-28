@@ -9,6 +9,13 @@
         <Setter Property="BorderThickness" Value="2"/>
     </Style>
     
+    <Style Selector="Border.InnerSurface">
+        <Setter Property="BorderBrush" Value="{DynamicResource SurfaceCard}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Background" Value="{DynamicResource SurfaceSecondary}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+    
     <Style Selector="Button.BaseButton">
         <Setter Property="Background" Value="{DynamicResource AccentColor}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
