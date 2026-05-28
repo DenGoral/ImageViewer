@@ -18,9 +18,10 @@
 
     <Grid ColumnDefinitions="Auto, *">
         <!-- IMAGES -->
-        <Grid Grid.Column="0">
-            <Border BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,1">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="25" Spacing="8">
+        <Grid Grid.Column="0" RowDefinitions="Auto, Auto, Auto">
+            <!-- LOAD BUTTONS -->
+            <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,1" Margin="10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Spacing="8" Margin="15">
                     <!-- LOAD FOLDER -->
                     <Button Classes="BaseButton" Width="150" Height="40">
                         <StackPanel Orientation="Horizontal" Spacing="10">
@@ -38,6 +39,13 @@
                     </Button>
                 </StackPanel>
             </Border>
+            
+            <!-- Just "Image" text -->
+            <TextBlock Grid.Row="1" Text="Images" Margin="25,0,0,0" FontSize="20" FontWeight="UltraLight"/>
+            
+            <ScrollViewer Grid.Row="2" Margin="20">
+                
+            </ScrollViewer>
         </Grid>
             
         <!-- MAIN IMAGE VIEW -->
