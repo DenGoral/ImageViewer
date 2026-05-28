@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ImageViewer/App.axaml" value="ImageViewer/ImageViewer.csproj" />
+        <entry key="ImageViewer/Assets/Icons.axaml" value="ImageViewer/ImageViewer.csproj" />
+        <entry key="ImageViewer/Styles/BaseStyles.axaml" value="ImageViewer/ImageViewer.csproj" />
+        <entry key="ImageViewer/Styles/Colors.axaml" value="ImageViewer/ImageViewer.csproj" />
+        <entry key="ImageViewer/Styles/ListBoxStyles.axaml" value="ImageViewer/ImageViewer.csproj" />
+        <entry key="ImageViewer/Views/MainWindow.axaml" value="ImageViewer/ImageViewer.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
