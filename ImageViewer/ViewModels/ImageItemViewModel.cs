@@ -10,7 +10,31 @@ public partial class ImageItemViewModel : ViewModelBase
     [ObservableProperty] private string _resolution;
     [ObservableProperty] private string _size;
     [ObservableProperty] private DateTime _dateModified;
-    [ObservableProperty] private Bitmap? _imageSource; 
+    
+    private Bitmap? _imageSource; 
+    public Bitmap? ImageSource
+    {
+        get // advanced "get" huh 
+        {
+            if (_imageSource == null && System.IO.File.Exists(_fullFilePath))
+            {
+                try
+                {
+                    using (var stream = System.IO.File.OpenRead(_fullFilePath))
+                    {
+                        _imageSource = Bitmap.DecodeToHeight(stream, 120);
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            return _imageSource;
+        }
+    }
+    
+    private readonly string _fullFilePath;
     
     public ImageItemViewModel(string filePath, string res, DateTime date, string size)
     {
@@ -18,5 +42,6 @@ public partial class ImageItemViewModel : ViewModelBase
         Resolution = res;
         Size = size;
         DateModified = date;
+        _fullFilePath = filePath;
     }
 }
