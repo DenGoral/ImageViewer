@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using SixLabors.ImageSharp;
 
 namespace ImageViewer.ViewModels;
 
@@ -49,15 +48,16 @@ public partial class MainWindowViewModel : ViewModelBase
             if (ext != ".jpg" && ext != ".png" && ext != ".jpeg") continue; 
 
             var info = new FileInfo(file);
-            
-            using (var stream = File.OpenRead(file))
+
+            using (var stream = await Task.Run(() => File.OpenRead(file)))
             {
-                var imageInfo = SixLabors.ImageSharp.Image.Identify(stream);
-                if (imageInfo != null)
-                {
-                    string resolution = $"{imageInfo.Width}x{imageInfo.Height}";
-                    Images.Add(new ImageItemViewModel(file, resolution, info.CreationTime, $"{info.Length / 1048576}"));
-                }
+                var tempBitmap = new Avalonia.Media.Imaging.Bitmap(stream);
+                string resolution = $"{tempBitmap.PixelSize.Width}x{tempBitmap.PixelSize.Height}";
+        
+                double sizeInMb = (double)info.Length / (1024 * 1024);
+                string sizeStr = $"{Math.Round(sizeInMb, 2)} MB";
+
+                Images.Add(new ImageItemViewModel(file, resolution, info.CreationTime, sizeStr));
             }
         }
     }
