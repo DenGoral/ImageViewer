@@ -13,6 +13,5 @@ public partial class MainWindowViewModel : ViewModelBase
         Images.Add(new ImageItemViewModel("/Users/DenysGoral/Programming/ImageViewer/ImageViewer/Assets/Images/1.png", "1920x1080", DateTime.Now));
         Images.Add(new ImageItemViewModel("/Users/DenysGoral/Programming/ImageViewer/ImageViewer/Assets/Images/2.png", "1920x1080", DateTime.Now));
         Images.Add(new ImageItemViewModel("/Users/DenysGoral/Programming/ImageViewer/ImageViewer/Assets/Images/3.png", "1920x1080", DateTime.Now));
-        
     }
 }
