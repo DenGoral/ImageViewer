@@ -41,7 +41,7 @@
                     <StackPanel Orientation="Horizontal" Spacing="5">
                         <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Size:" Foreground="Gray"/>
-                        <TextBlock Text="{Binding Size, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
+                        <TextBlock Text="{Binding Size}" Foreground="Gray"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
