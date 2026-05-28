@@ -16,20 +16,28 @@
         <DataTemplate DataType="vm:ImageItemViewModel">
             <Grid ColumnDefinitions="120, *" Margin="5">
                 <Image Grid.Column="0" Source="{Binding ImageSource}" 
-                       Width="100" Height="100" Stretch="UniformToFill" VerticalAlignment="Center"/>
+                       Width="130" Height="120" Stretch="UniformToFill" VerticalAlignment="Center"/>
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="15,0,0,0" Spacing="5">
                     <TextBlock Text="{Binding FileName}" FontWeight="Bold" FontSize="16" 
                                TextTrimming="CharacterEllipsis"/>
 
                     <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Path Data="{StaticResource ImageIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Resolution:" Foreground="Gray"/>
-                        <TextBlock Text="{Binding Resolution}"/>
+                        <TextBlock Text="{Binding Resolution}" Foreground="Gray"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Date:" Foreground="Gray"/>
-                        <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                        <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
+                        <TextBlock Text="Size:" Foreground="Gray"/>
+                        <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
