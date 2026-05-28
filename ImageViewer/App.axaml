@@ -11,6 +11,7 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="/Styles/BaseStyles.axaml"/>
+        <StyleInclude Source="/Styles/ListBoxStyles.axaml"/>
     </Application.Styles>
     
     <Application.Resources>

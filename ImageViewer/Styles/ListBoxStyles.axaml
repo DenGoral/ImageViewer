@@ -1,0 +1,35 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="ListBox.BaseListBox">
+        <Setter Property="Background" Value="{DynamicResource SurfaceSecondary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SurfaceCard}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    
+    <Style Selector="ListBoxItem">
+        <Setter Property="Margin" Value="5,5"/>
+        <Setter Property="Padding" Value="20,15"/>
+        <Setter Property="RenderTransform" Value="none"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.15"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.075" Easing="CubicEaseOut"/>
+            </Transitions>
+        </Setter>
+    </Style>
+    
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource AccentColor}"/> 
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <Style Selector="ListBoxItem:pressed">
+        <Setter Property="RenderTransform" Value="scale(0.96)" />
+    </Style>
+</Styles>
