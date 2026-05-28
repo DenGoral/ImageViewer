@@ -1,6 +1,10 @@
-﻿namespace ImageViewer.ViewModels;
+﻿using System.Collections.ObjectModel;
+using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ImageViewer.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
+    public ObservableCollection<Image> Images { get; } = new();
 }
