@@ -2,10 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style Selector="ListBox.BaseListBox">
-        <Setter Property="Background" Value="{DynamicResource SurfaceSecondary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource SurfaceCard}"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
     
@@ -25,7 +22,9 @@
     </Style>
     
     <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource AccentColor}"/> 
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColor}"/> 
+        <Setter Property="Background" Value="#223044"/>
+        <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
     
