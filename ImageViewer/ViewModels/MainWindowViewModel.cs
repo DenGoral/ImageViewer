@@ -52,11 +52,10 @@ public partial class MainWindowViewModel : ViewModelBase
             
             using (var stream = File.OpenRead(file))
             {
-                var imageInfo = Image.Identify(stream);
+                var imageInfo = SixLabors.ImageSharp.Image.Identify(stream);
                 if (imageInfo != null)
                 {
                     string resolution = $"{imageInfo.Width}x{imageInfo.Height}";
-
                     Images.Add(new ImageItemViewModel(file, resolution, info.CreationTime, $"{info.Length / 1048576}"));
                 }
             }
