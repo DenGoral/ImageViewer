@@ -8,6 +8,7 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Gallery"
+        x:Name="MainWindowName"
         
         Width="900" Height="925"
         Background="#0C141B">
@@ -22,22 +23,25 @@
                     <TextBlock Text="{Binding FileName}" FontWeight="Bold" FontSize="16" 
                                TextTrimming="CharacterEllipsis"/>
 
+                    <!-- RES -->
                     <StackPanel Orientation="Horizontal" Spacing="5">
                         <Path Data="{StaticResource ImageIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Resolution:" Foreground="Gray"/>
                         <TextBlock Text="{Binding Resolution}" Foreground="Gray"/>
                     </StackPanel>
 
+                    <!-- DATE -->
                     <StackPanel Orientation="Horizontal" Spacing="5">
                         <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Date:" Foreground="Gray"/>
                         <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
                     </StackPanel>
                     
+                    <!-- SIZE -->
                     <StackPanel Orientation="Horizontal" Spacing="5">
                         <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
                         <TextBlock Text="Size:" Foreground="Gray"/>
-                        <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
+                        <TextBlock Text="{Binding Size, StringFormat={}{0:yyyy-MM-dd HH:mm}}" Foreground="Gray"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
@@ -55,7 +59,9 @@
             <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,1" Margin="10">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Spacing="8" Margin="15">
                     <!-- LOAD FOLDER -->
-                    <Button Classes="BaseButton" Width="150" Height="40">
+                    <Button Classes="BaseButton" Width="150" Height="40" Command="{Binding OpenFolderAsync}"
+                            CommandParameter="{Binding #MainWindowName}">
+                        
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon"/>
                             <TextBlock Text="Load Folder" HorizontalAlignment="Left"/>
