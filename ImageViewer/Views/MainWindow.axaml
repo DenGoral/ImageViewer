@@ -86,8 +86,12 @@
         </Grid>
             
         <!-- MAIN IMAGE VIEW -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" RowDefinitions="Auto, Auto, Auto">
+            <Border Grid.Row="0" Classes="BaseBorder" Margin="25">
+                <Grid>
                 
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Window>
