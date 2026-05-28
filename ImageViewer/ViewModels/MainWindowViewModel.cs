@@ -41,7 +41,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _folderPath = result[0].Path.LocalPath;
 
         Images.Clear(); // clear old images before load new
-
+        
         foreach (string file in Directory.EnumerateFiles(_folderPath))
         {
             string ext = Path.GetExtension(file).ToLower();
