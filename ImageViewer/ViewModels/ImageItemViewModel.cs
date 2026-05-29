@@ -12,6 +12,7 @@ public partial class ImageItemViewModel : ViewModelBase
     [ObservableProperty] private DateTime _dateModified;
     
     private Bitmap? _imageSource; 
+    private Bitmap? _fullImageSource; 
     public Bitmap? ImageSource
     {
         get // advanced "get" huh 
@@ -31,6 +32,28 @@ public partial class ImageItemViewModel : ViewModelBase
                 }
             }
             return _imageSource;
+        }
+    }
+    
+    public Bitmap? FullImageSource
+    {
+        get
+        {
+            if (_imageSource == null && System.IO.File.Exists(_fullFilePath))
+            {
+                try
+                {
+                    using (var stream = System.IO.File.OpenRead(_fullFilePath))
+                    {
+                        _fullImageSource = new Bitmap(stream); 
+                    }
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            return _fullImageSource;
         }
     }
     
