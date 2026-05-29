@@ -104,24 +104,46 @@
 
             <Border Grid.Row="2" Classes="InnerSurface" Padding="15">
                 <Grid RowDefinitions="Auto, *">
-                    
                     <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,3" Padding="0,0,0,10">
                         <TextBlock Text="Image Details" FontSize="20" FontWeight="UltraLight" Foreground="{DynamicResource TextPrimary}"/>
                     </Border>
                     
-                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto" Margin="0,15,0,0">
+                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, *" Margin="0,15,0,0">
                         <!-- FILE NAME -->
                         <StackPanel Grid.Row="0" Spacing="10" Margin="10" Orientation="Horizontal">
-                            <Path Data="{StaticResource FileIcon}" Classes="BaseIcon" Fill="Gray"/>
+                            <Path Data="{StaticResource FileIcon}" Classes="BaseIcon" Stroke="Gray"/>
                             <TextBlock Text="File Name:" Foreground="Gray" Width="100"/>
                             <TextBlock Text="{Binding FileName}"/>
                         </StackPanel>
                         
                         <!-- DATE CREATED-->
                         <StackPanel Grid.Row="1" Spacing="10" Margin="10" Orientation="Horizontal">
-                            <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Fill="Gray"/>
+                            <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Stroke="Gray"/>
                             <TextBlock Text="Date Created:" Foreground="Gray" Width="100"/>
                             <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
+                        </StackPanel>
+                        
+                        <!-- RES-->
+                        <StackPanel Grid.Row="2" Spacing="10" Margin="10" Orientation="Horizontal">
+                            <Path Data="{StaticResource ImageIcon}" Classes="BaseIcon" Stroke="Gray"/>
+                            <TextBlock Text="Resolution:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding Resolution}"/>
+                        </StackPanel>
+                        
+                        <!-- SIZE-->
+                        <StackPanel Grid.Row="3" Spacing="10" Margin="10" Orientation="Horizontal">
+                            <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
+                            <TextBlock Text="File Size:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding Size}"/>
+                        </StackPanel>
+                        
+                        <!-- FOLDER PATH-->
+                        <StackPanel Grid.Row="4" Spacing="10" Margin="10" Orientation="Horizontal"
+                                    x:DataType="vm:MainWindowViewModel">
+                            
+                            <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
+                            <TextBlock Text="Folder Path:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding FolderPath}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
