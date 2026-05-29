@@ -86,10 +86,46 @@
         </Grid>
             
         <!-- MAIN IMAGE VIEW -->
-        <Grid Grid.Column="1" RowDefinitions="Auto, Auto, Auto">
-            <Border Grid.Row="0" Classes="BaseBorder" Margin="25">
-                <Grid>
-                
+        <Grid Grid.Column="1" RowDefinitions="Auto, *, Auto" Margin="25">
+            <!-- CONTROL BUTTONS-->
+            <Border Grid.Row="0" Classes="InnerSurface" Padding="15">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8">
+                        <Button Classes="BaseButton" Content="&lt;" Width="50" Height="50" FontSize="30"/>
+                        <Button Classes="BaseButton" Content="&gt;" Width="50" Height="50" FontSize="30"/>
+                    </StackPanel>
+                </DockPanel>
+            </Border>
+                                
+            <Image Grid.Row="1" Source="/Assets/Images/1.png"
+                   Margin="0,20" Stretch="Uniform"/>
+
+            <Border Grid.Row="2" Classes="InnerSurface" Padding="15">
+                <Grid RowDefinitions="Auto, *">
+                    <!-- TextBlock -->
+                    <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}"
+                            BorderThickness="0,0,0,3">
+                        
+                        <TextBlock Text="Image Details" Margin="25,0,0,0" 
+                                   FontSize="20" FontWeight="UltraLight" Foreground="{DynamicResource TextPrimary}"/>
+                    </Border>
+                    
+                    <!-- MAIN IMAGE STATS -->
+                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, Auto, *"  x:DataType="vm:ImageItemViewModel">
+                        <!-- FILE NAME -->
+                        <StackPanel Grid.Row="1" Spacing="10" Margin="10" Orientation="Horizontal" >
+                            <Path Data="{StaticResource FileIcon}" Classes="BaseIcon" Fill="Gray"/>
+                            <TextBlock Text="File Name:" Foreground="Gray"/>
+                            <TextBlock Text="{Binding FileName}" Foreground="Gray"/>
+                        </StackPanel>
+                        
+                        <!-- DATE CREATED-->
+                        <StackPanel Grid.Row="1" Spacing="10" Margin="10" Orientation="Horizontal">
+                            <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Fill="Gray"/>
+                            <TextBlock Text="Date Created:" Foreground="Gray"/>
+                            <TextBlock Text="{Binding DateModified}" Foreground="Gray"/>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>
