@@ -14,8 +14,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public ObservableCollection<ImageItemViewModel> Images { get; } = new();
     
     [ObservableProperty] private ImageItemViewModel? _selectedImage;
-
-    private string _folderPath;
+    [ObservableProperty] private string _folderPath;
     
     public MainWindowViewModel()
     {
@@ -36,16 +35,16 @@ public partial class MainWindowViewModel : ViewModelBase
 
         if (result.Count > 0)
         {
-            _folderPath = result[0].Path.LocalPath;
+            FolderPath = result[0].Path.LocalPath;
         }
         
         // look through folderPath
         if (result.Count == 0) return;
-        _folderPath = result[0].Path.LocalPath;
+        FolderPath = result[0].Path.LocalPath;
 
         Images.Clear(); // clear old images before load new
         
-        foreach (string file in Directory.EnumerateFiles(_folderPath))
+        foreach (string file in Directory.EnumerateFiles(FolderPath))
         {
             string ext = Path.GetExtension(file).ToLower();
             if (ext != ".jpg" && ext != ".png" && ext != ".jpeg") continue; 
