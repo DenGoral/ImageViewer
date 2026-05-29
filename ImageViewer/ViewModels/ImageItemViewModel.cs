@@ -12,7 +12,7 @@ public partial class ImageItemViewModel : ViewModelBase
     [ObservableProperty] private DateTime _dateModified;
     
     private Bitmap? _imageSource; 
-    private Bitmap? _fullImageSource; 
+    private Bitmap? _fullImageSource;
     public Bitmap? ImageSource
     {
         get // advanced "get" huh 
@@ -39,17 +39,25 @@ public partial class ImageItemViewModel : ViewModelBase
     {
         get
         {
-            if (_imageSource == null && System.IO.File.Exists(_fullFilePath))
+            if (_fullImageSource == null)
             {
+                if (!System.IO.File.Exists(_fullFilePath))
+                {
+                    System.Diagnostics.Debug.WriteLine($"[XAML BUG] FIle not found with path: {_fullFilePath}");
+                    return null;
+                }
+
                 try
                 {
                     using (var stream = System.IO.File.OpenRead(_fullFilePath))
                     {
-                        _fullImageSource = new Bitmap(stream); 
+                        _fullImageSource = new Bitmap(stream);
+                        System.Diagnostics.Debug.WriteLine($"[SUCCESS] Big image loaded: {FileName}");
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine($"[EXCEPTION] Error downloading original: {ex.Message}");
                     return null;
                 }
             }
