@@ -82,12 +82,15 @@
             <TextBlock Grid.Row="1" Text="Images" Margin="25,0,0,0" FontSize="20" FontWeight="UltraLight"/>
             
             <!-- IMAGES -->
-            <ListBox Grid.Row="2" Classes="BaseListBox" ItemsSource="{Binding Images}"/>
+            <ListBox Grid.Row="2" Classes="BaseListBox" ItemsSource="{Binding Images}"
+                     SelectedItem="{Binding SelectedImage}"/>
         </Grid>
             
-        <!-- MAIN IMAGE VIEW -->
-        <Grid Grid.Column="1" RowDefinitions="Auto, *, Auto" Margin="25">
-            <!-- CONTROL BUTTONS-->
+        <Grid Grid.Column="1" 
+              RowDefinitions="Auto, *, Auto" 
+              Margin="25"
+              DataContext="{Binding SelectedImage}">
+            
             <Border Grid.Row="0" Classes="InnerSurface" Padding="15">
                 <DockPanel>
                     <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8">
@@ -97,33 +100,28 @@
                 </DockPanel>
             </Border>
                                 
-            <Image Grid.Row="1" Source="/Assets/Images/1.png"
-                   Margin="0,20" Stretch="Uniform"/>
+            <Image Grid.Row="1" Source="{Binding FullImageSource}" Margin="0,20" Stretch="Uniform"/>
 
             <Border Grid.Row="2" Classes="InnerSurface" Padding="15">
                 <Grid RowDefinitions="Auto, *">
-                    <!-- TextBlock -->
-                    <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}"
-                            BorderThickness="0,0,0,3">
-                        
-                        <TextBlock Text="Image Details" Margin="25,0,0,0" 
-                                   FontSize="20" FontWeight="UltraLight" Foreground="{DynamicResource TextPrimary}"/>
+                    
+                    <Border Grid.Row="0" BorderBrush="{DynamicResource SurfaceCard}" BorderThickness="0,0,0,3" Padding="0,0,0,10">
+                        <TextBlock Text="Image Details" FontSize="20" FontWeight="UltraLight" Foreground="{DynamicResource TextPrimary}"/>
                     </Border>
                     
-                    <!-- MAIN IMAGE STATS -->
-                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, Auto, *"  x:DataType="vm:ImageItemViewModel">
+                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto" Margin="0,15,0,0">
                         <!-- FILE NAME -->
-                        <StackPanel Grid.Row="1" Spacing="10" Margin="10" Orientation="Horizontal" >
+                        <StackPanel Grid.Row="0" Spacing="10" Margin="10" Orientation="Horizontal">
                             <Path Data="{StaticResource FileIcon}" Classes="BaseIcon" Fill="Gray"/>
-                            <TextBlock Text="File Name:" Foreground="Gray"/>
-                            <TextBlock Text="{Binding FileName}" Foreground="Gray"/>
+                            <TextBlock Text="File Name:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding FileName}"/>
                         </StackPanel>
                         
                         <!-- DATE CREATED-->
                         <StackPanel Grid.Row="1" Spacing="10" Margin="10" Orientation="Horizontal">
                             <Path Data="{StaticResource CalendarIcon}" Classes="BaseIcon" Fill="Gray"/>
-                            <TextBlock Text="Date Created:" Foreground="Gray"/>
-                            <TextBlock Text="{Binding DateModified}" Foreground="Gray"/>
+                            <TextBlock Text="Date Created:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding DateModified, StringFormat={}{0:yyyy-MM-dd HH:mm}}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
