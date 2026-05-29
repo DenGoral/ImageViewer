@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ImageViewer.ViewModels;
 
@@ -12,6 +13,8 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public ObservableCollection<ImageItemViewModel> Images { get; } = new();
     
+    [ObservableProperty] private ImageItemViewModel? _selectedImage;
+
     private string _folderPath;
     
     public MainWindowViewModel()
