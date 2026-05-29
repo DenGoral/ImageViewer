@@ -10,9 +10,9 @@
     </Style>
     
     <Style Selector="Border.InnerSurface">
-        <Setter Property="BorderBrush" Value="{DynamicResource SurfaceCard}"/>
+        <Setter Property="BorderBrush" Value="#232B35"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Background" Value="{DynamicResource SurfaceSecondary}"/>
+        <Setter Property="Background" Value="#171E2A"/>
         <Setter Property="CornerRadius" Value="10"/>
     </Style>
     
