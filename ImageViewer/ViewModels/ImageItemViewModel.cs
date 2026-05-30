@@ -9,6 +9,7 @@ public partial class ImageItemViewModel : ViewModelBase
     [ObservableProperty] private string _fileName;
     [ObservableProperty] private string _resolution;
     [ObservableProperty] private string _size;
+    [ObservableProperty] private string _fileFormat;
     [ObservableProperty] private DateTime _dateModified;
     
     private Bitmap? _imageSource; 
@@ -67,11 +68,12 @@ public partial class ImageItemViewModel : ViewModelBase
     
     private readonly string _fullFilePath;
     
-    public ImageItemViewModel(string filePath, string res, DateTime date, string size)
+    public ImageItemViewModel(string filePath, string res, DateTime date, string size, string fileFormat)
     {
         FileName = System.IO.Path.GetFileName(filePath);
         Resolution = res;
         Size = size;
+        FileFormat = _fileFormat;
         DateModified = date;
         _fullFilePath = filePath;
     }
