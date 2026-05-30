@@ -18,11 +18,11 @@ public partial class ImageItemViewModel : ViewModelBase
     {
         get // advanced "get" huh 
         {
-            if (_imageSource == null && System.IO.File.Exists(_fullFilePath))
+            if (_imageSource == null && File.Exists(_fullFilePath))
             {
                 try
                 {
-                    using (var stream = System.IO.File.OpenRead(_fullFilePath))
+                    using (var stream = File.OpenRead(_fullFilePath))
                     {
                         _imageSource = Bitmap.DecodeToHeight(stream, 120);
                     }
@@ -42,7 +42,7 @@ public partial class ImageItemViewModel : ViewModelBase
         {
             if (_fullImageSource == null)
             {
-                if (!System.IO.File.Exists(_fullFilePath))
+                if (!File.Exists(_fullFilePath))
                 {
                     System.Diagnostics.Debug.WriteLine($"[XAML BUG] FIle not found with path: {_fullFilePath}");
                     return null;
@@ -50,7 +50,7 @@ public partial class ImageItemViewModel : ViewModelBase
 
                 try
                 {
-                    using (var stream = System.IO.File.OpenRead(_fullFilePath))
+                    using (var stream = File.OpenRead(_fullFilePath))
                     {
                         _fullImageSource = new Bitmap(stream);
                         System.Diagnostics.Debug.WriteLine($"[SUCCESS] Big image loaded: {FileName}");
