@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -9,7 +10,6 @@ public partial class ImageItemViewModel : ViewModelBase
     [ObservableProperty] private string _fileName;
     [ObservableProperty] private string _resolution;
     [ObservableProperty] private string _size;
-    [ObservableProperty] private string _fileFormat;
     [ObservableProperty] private DateTime _dateModified;
     
     private Bitmap? _imageSource; 
@@ -68,12 +68,15 @@ public partial class ImageItemViewModel : ViewModelBase
     
     private readonly string _fullFilePath;
     
-    public ImageItemViewModel(string filePath, string res, DateTime date, string size, string fileFormat)
+    // will return empty string if _fullFilePath is null
+    public string FolderPath => Path.GetDirectoryName(_fullFilePath) ?? string.Empty; 
+    public string FileExtension => Path.GetExtension(_fullFilePath).Replace(".", " ").ToUpper(); 
+    
+    public ImageItemViewModel(string filePath, string res, DateTime date, string size)
     {
-        FileName = System.IO.Path.GetFileName(filePath);
+        FileName = Path.GetFileName(filePath);
         Resolution = res;
         Size = size;
-        FileFormat = _fileFormat;
         DateModified = date;
         _fullFilePath = filePath;
     }
