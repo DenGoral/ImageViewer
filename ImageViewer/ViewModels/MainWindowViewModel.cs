@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ImageViewer.ViewModels;
 
@@ -17,8 +19,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private string _folderPath;
     
     public MainWindowViewModel()
-    {
-    }
+    { }
 
     public async Task OpenFolderAsync(Visual visual)
     {
@@ -108,6 +109,35 @@ public partial class MainWindowViewModel : ViewModelBase
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Помилка читання файлу {file}: {ex.Message}");
+        }
+    }
+    
+    
+    // NEXT IMAGE METHOD 
+    [RelayCommand]
+    private void NextImage()
+    {
+        if (SelectedImage == null || Images.Count == 0) return;
+
+        int currentIndex = Images.IndexOf(SelectedImage);
+
+        if (currentIndex < Images.Count - 1)
+        {
+            SelectedImage = Images[currentIndex + 1];
+        }
+    }
+    
+    // Previous IMAGE METHOD 
+    [RelayCommand]
+    private void PreviousImage()
+    {
+        if (SelectedImage == null || Images.Count == 0) return;
+
+        int currentIndex = Images.IndexOf(SelectedImage);
+
+        if (currentIndex > 0)
+        {
+            SelectedImage = Images[currentIndex - 1];
         }
     }
 }
