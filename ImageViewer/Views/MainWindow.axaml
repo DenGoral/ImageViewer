@@ -3,14 +3,14 @@
         xmlns:vm="using:ImageViewer.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="925"
+        mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="925"
         x:Class="ImageViewer.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Gallery"
         x:Name="MainWindowName"
         
-        Width="900" Height="925"
+        Width="1100" Height="925"
         Background="#0C141B">
     
     <Window.DataTemplates>
@@ -69,7 +69,10 @@
                     </Button>
                 
                     <!-- LOAD FILE -->
-                    <Button Classes="BaseButton" Width="150" Height="40" Background="#212934">
+                    <Button Classes="BaseButton" Width="150" Height="40" Background="#212934"
+                            Command="{Binding OpenFileAsync}"
+                            CommandParameter="{Binding #MainWindowName}">
+                        
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <Path Data="{StaticResource FileIcon}" Classes="BaseIcon"/>
                             <TextBlock Text="Load File" HorizontalAlignment="Left"/>
@@ -100,6 +103,7 @@
                 </DockPanel>
             </Border>
                                 
+            <!-- MAIN IMAGE -->
             <Image Grid.Row="1" Source="{Binding FullImageSource}" Margin="0,20" Stretch="Uniform"/>
 
             <Border Grid.Row="2" Classes="InnerSurface" Padding="15">
@@ -108,7 +112,7 @@
                         <TextBlock Text="Image Details" FontSize="20" FontWeight="UltraLight" Foreground="{DynamicResource TextPrimary}"/>
                     </Border>
                     
-                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, *" Margin="0,15,0,0">
+                    <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto, Auto, Auto, *" Margin="0,15,0,0">
                         <!-- FILE NAME -->
                         <StackPanel Grid.Row="0" Spacing="10" Margin="10" Orientation="Horizontal">
                             <Path Data="{StaticResource FileIcon}" Classes="BaseIcon" Stroke="Gray"/>
@@ -138,12 +142,17 @@
                         </StackPanel>
                         
                         <!-- FOLDER PATH-->
-                        <StackPanel Grid.Row="4" Spacing="10" Margin="10" Orientation="Horizontal"
-                                    x:DataType="vm:MainWindowViewModel">
-                            
+                        <StackPanel Grid.Row="4" Spacing="10" Margin="10" Orientation="Horizontal">
                             <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
                             <TextBlock Text="Folder Path:" Foreground="Gray" Width="100"/>
                             <TextBlock Text="{Binding FolderPath}"/>
+                        </StackPanel>
+                        
+                        <!-- FORMAT-->
+                        <StackPanel Grid.Row="5" Spacing="10" Margin="10" Orientation="Horizontal">
+                            <Path Data="{StaticResource FolderIcon}" Classes="BaseIcon" Stroke="Gray"/>
+                            <TextBlock Text="File Format:" Foreground="Gray" Width="100"/>
+                            <TextBlock Text="{Binding FileExtension}"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
