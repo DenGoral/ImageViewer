@@ -3,14 +3,14 @@
         xmlns:vm="using:ImageViewer.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="925"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="925"
         x:Class="ImageViewer.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="Gallery"
         x:Name="MainWindowName"
         
-        Width="1100" Height="925"
+        Width="1200" Height="925"
         Background="#0C141B">
     
     <Window.DataTemplates>
@@ -96,9 +96,15 @@
             
             <Border Grid.Row="0" Classes="InnerSurface" Padding="15">
                 <DockPanel>
-                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8">
-                        <Button Classes="BaseButton" Content="&lt;" Width="50" Height="50" FontSize="30"/>
-                        <Button Classes="BaseButton" Content="&gt;" Width="50" Height="50" FontSize="30"/>
+                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8"
+                                x:DataType="vm:MainWindowViewModel">
+                        
+                        <!-- PREVIOUS -->
+                        <Button Classes="BaseButton" Content="&lt;" Width="50" Height="50" FontSize="30"
+                                Command="{Binding PreviousImageCommand}"/>
+                        <!-- NEXT -->
+                        <Button Classes="BaseButton" Content="&gt;" Width="50" Height="50" FontSize="30"
+                                Command="{Binding NextImageCommand}"/>
                     </StackPanel>
                 </DockPanel>
             </Border>
